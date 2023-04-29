@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar-nav li a {
+  font-size: 17px;
+}
+.navbar-brand {
+  letter-spacing: 3px;
+}
+
+.card {
+  transition: all 0.5s ease;
+}
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.product img {
+  transition: all 0.5s ease;
+}
+.product img:hover {
+  transform: scale(1.1);
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: contain;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 50px;
+}
+
+.product-category {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.product-desc {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #565656;
+}
+
+.filter-clear {
+  margin: 25px;
+}
+
+.header-section {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+}
+
+.main-container-body {
+  margin-top: 85px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-section {
+  background: #f8f9fa;
+  max-height: 100%;
+}
+
+.social-media-icons {
+  gap: 20px;
+}
+
+.social-media-icons img {
+  cursor: pointer;
+}
+
+.cart-body-container{
+  width: 800px;
+}
