@@ -94,6 +94,10 @@ code {
   cursor: pointer;
 }
 
-.cart-body-container{
+.cart-body-container {
   width: 800px;
+}
+
+.total-amount {
+  font-weight: 700;
 }

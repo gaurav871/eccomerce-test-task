@@ -56,6 +56,11 @@ const Cart = () => {
 
   return (
     <>
+      {state.length > 0 && (
+        <div className="total-amount">
+          Total Amount : $ {state.reduce((n, { price }) => n + price, 0)}
+        </div>
+      )}
       {state.length === 0 && emptyCart()}
       {state.length !== 0 && state.map(cartItems)}
     </>
