@@ -4,7 +4,7 @@ const addItems = (state = addItem, action) => {
     switch (action.type) {
         case "ADDITEM" : return [
             ...state,
-            action.payload
+            action.payload,
         ]
 
         case "DELITEM" :
