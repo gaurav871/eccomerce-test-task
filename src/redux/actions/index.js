@@ -11,3 +11,10 @@ export const delItem = (product) => {
         payload : product
     }
 }
+
+export const updateItem = (product) => {
+    return {
+        type : "UPDITEM",
+        payload : [...product]
+    }
+}

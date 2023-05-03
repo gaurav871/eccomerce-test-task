@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { delItem } from "../redux/actions/index";
+import { delItem, updateItem } from "../redux/actions/index";
 import { Button, ButtonGroup } from "@mui/material";
 
 const Cart = () => {
@@ -15,7 +15,7 @@ const Cart = () => {
     const payload = [...state].map((val) => {
       return {
         ...val,
-        quantity: 1,
+        quantity: val?.quantity ? val?.quantity : 1,
       };
     });
     setCartData(payload);
@@ -24,6 +24,7 @@ const Cart = () => {
 
   const handleClose = (item) => {
     setIsProductRemove(true);
+    dispatch(updateItem(cartData));
     dispatch(delItem(item));
   };
 
@@ -64,7 +65,9 @@ const Cart = () => {
             </div>
             <div className="col-md-4">
               <h3>{cartItem.title}</h3>
-              <p className="lead fw-bold">${cartItem.price}</p>
+              <p className="lead fw-bold">
+                ${parseFloat(cartItem.price).toFixed(2)}
+              </p>
               <span>
                 Quantity : <p className="lead fw-bold">{cartItem.quantity}</p>
               </span>
