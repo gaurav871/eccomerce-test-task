@@ -28,11 +28,14 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
 
   const handleCart = (product) => {
+    const payload = { ...product };
+    payload.originalCost = payload.price;
+    payload.quantity = 1;
     if (cartBtn === "Add to Cart") {
-      dispatch(addItem(product));
+      dispatch(addItem(payload));
       setCartBtn("Remove from Cart");
     } else {
-      dispatch(delItem(product));
+      dispatch(delItem(payload));
       setCartBtn("Add to Cart");
     }
   };

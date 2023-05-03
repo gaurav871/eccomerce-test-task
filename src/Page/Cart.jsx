@@ -6,24 +6,18 @@ import { Button, ButtonGroup } from "@mui/material";
 
 const Cart = () => {
   const state = useSelector((state) => state.addItem);
-
   const dispatch = useDispatch();
   const [cartData, setCartData] = useState([]);
   const [isProductRemove, setIsProductRemove] = useState(false);
 
   useEffect(() => {
-    const payload = [...state].map((val) => {
-      return {
-        ...val,
-        quantity: val?.quantity ? val?.quantity : 1,
-      };
-    });
+    const payload = [...state];
     setCartData(payload);
     // eslint-disable-next-line
   }, [isProductRemove]);
 
   const handleClose = (item) => {
-    setIsProductRemove(true);
+    setIsProductRemove(!isProductRemove);
     dispatch(updateItem(cartData));
     dispatch(delItem(item));
   };
@@ -31,14 +25,16 @@ const Cart = () => {
   const handleAddQuantity = (index) => {
     const payload = [...cartData];
     payload[index].quantity += 1;
-    payload[index].price = payload[index].quantity * state[index].price;
+    payload[index].price =
+      payload[index].quantity * payload[index].originalCost;
     setCartData(payload);
   };
 
   const handleDeleteItem = (index) => {
     const payload = [...cartData];
     payload[index].quantity -= 1;
-    payload[index].price = payload[index].quantity * state[index].price;
+    payload[index].price =
+      payload[index].quantity * payload[index].originalCost;
     setCartData(payload);
   };
 
@@ -65,9 +61,7 @@ const Cart = () => {
             </div>
             <div className="col-md-4">
               <h3>{cartItem.title}</h3>
-              <p className="lead fw-bold">
-                ${parseFloat(cartItem.price).toFixed(2)}
-              </p>
+              <p className="lead fw-bold">${cartItem.originalCost}</p>
               <span>
                 Quantity : <p className="lead fw-bold">{cartItem.quantity}</p>
               </span>

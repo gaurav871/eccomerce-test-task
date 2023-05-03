@@ -17,6 +17,7 @@ import {
   ITEM_PADDING_TOP,
   dataPerSlide,
 } from "../utills/constant";
+import { useSelector } from "react-redux";
 
 const MenuProps = {
   PaperProps: {
@@ -32,6 +33,8 @@ const Product = () => {
   const [productData, setProductData] = useState(products);
   const [categoryName, setCategoryName] = useState([]);
   const [next, setNext] = useState(dataPerSlide);
+
+  const state = useSelector((state) => state.addItem);
 
   useEffect(() => {
     if (categoryName?.length === 0) {
@@ -107,7 +110,7 @@ const Product = () => {
         )}
         <div className="row justify-content-around">
           {productData?.length > 0 ? (
-            productData?.slice(0, next)?.map((item) => ProductCard(item))
+            productData?.slice(0, next)?.map((item) => ProductCard(item, state))
           ) : (
             <div className="d-flex justify-content-center font-weight-bold">
               No records available.
